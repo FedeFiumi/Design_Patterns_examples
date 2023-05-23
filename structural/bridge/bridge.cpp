@@ -1,5 +1,7 @@
 #include <iostream>
 
 int main () {
-  system("pause");
+  std::cout << "PRESS ENTER:";
+  std::cin.get();
+  return 0;
 }

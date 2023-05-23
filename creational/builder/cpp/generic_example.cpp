@@ -96,6 +96,7 @@ int main () {
 
     delete my_product_1;
     delete my_product_2;
+
     std::cout << "PRESS ENTER:";
     std::cin.get();
     return 0;

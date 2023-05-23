@@ -8,7 +8,7 @@ project(FCBS VERSION 1.0)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(PROJECT_FILES generic_example.cpp Singleton.cpp Singleton.h)
+set(PROJECT_FILES generic_example.cpp singleton.cpp singleton.h)
 
 message("\n")
 message("========================================================")

@@ -90,5 +90,8 @@ int main () {
 
   // Invalid media formats (will throw an exception)
   my_audio_player.play("graphic", "another_file.mp3");
-  system("pause");
+
+  std::cout << "PRESS ENTER:";
+  std::cin.get();
+  return 0;
 }

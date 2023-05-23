@@ -1,5 +1,5 @@
 #include <string>
-#include "Singleton.h"
+#include "singleton.h"
 
 Singleton* Singleton::singleton_= nullptr;
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <string>
-#include "Singleton.h"
+#include "singleton.h"
 
 Singleton* my_singleton = Singleton::GetInstance("GLOBAL");
 
