@@ -36,6 +36,7 @@ int main()
     std::thread t2(FuncThread2);
     t1.join();
     t2.join();
+
     std::cout << my_singleton->value() << " main" << std::endl;
     return 0;
 }
