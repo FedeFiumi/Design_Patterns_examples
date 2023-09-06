@@ -13,3 +13,19 @@ Every pattern is categorized in subdirectories, based on:
 ## Documentation structure
 A markdown readme has to be implemented for every pattern, along with eventual
 additional description
+
+```plantuml
+@startuml
+    skinparam backgroundColor #EEEBDC
+    skinparam handwritten true
+    actor Customer
+    Customer -> "login()" : username & password
+    "login()" -> Customer : session token
+    activate "login()"
+    Customer -> "placeOrder()" : session token, order info
+    "placeOrder()" -> Customer : ok
+    Customer -> "logout()"
+    "logout()" -> Customer : ok
+    deactivate "login()"
+@enduml
+```
