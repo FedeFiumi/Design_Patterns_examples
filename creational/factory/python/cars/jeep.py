@@ -1,4 +1,6 @@
-class Jeep():
+from .abs_car import AbsCar
+
+class Jeep(AbsCar):
     def start(self):
         print('Staring Jeep!')
 

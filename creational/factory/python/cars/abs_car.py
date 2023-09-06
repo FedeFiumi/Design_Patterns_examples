@@ -1,6 +1,6 @@
 import abc
 
-class AbsAuto(abc.ABC):
+class AbsCar(abc.ABC):
 
   @abc.abstractmethod
   def start(self):

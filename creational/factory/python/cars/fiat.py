@@ -1,4 +1,6 @@
-class Fiat():
+from .abs_car import AbsCar
+
+class Fiat(AbsCar):
     def start(self):
         print('Staring Fiat!')
 

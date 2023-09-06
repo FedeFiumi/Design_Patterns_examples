@@ -1,20 +1,9 @@
-from cars.fiat import Fiat
-from cars.mercedes import Mercedes
-from cars.jeep import Jeep
-from cars.null_car import NullCar
+from car_factory import CarFactory
 
-def getcar(carname:str):
-  if carname == 'Fiat':
-    return Fiat()
-  elif carname == 'Mercedes':
-    return Mercedes()
-  elif carname == 'Jeep':
-    return Jeep()
-  else:
-    return NullCar()
+factory = CarFactory()
 
 if __name__ == "__main__":
-    for carname in 'Fiat', 'Mercedes', 'Jeep','Tesla':
-        car = getcar(carname)
+    for car_name in 'Fiat', 'Mercedes', 'Jeep','Tesla':
+        car = factory.create_instance(car_name)
         car.start()
         car.stop()
