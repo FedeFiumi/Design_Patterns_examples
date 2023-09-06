@@ -3,3 +3,4 @@
 
 # Directories
 .vscode/
+__pycache__
