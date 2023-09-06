@@ -1,4 +1,4 @@
-class Nullcar():
+class NullCar():
     def start(self):
         print('Start undefined car')
 
