@@ -1,7 +1,7 @@
-from fiat import Fiat
-from mercedes import Mercedes
-from jeep import Jeep
-from nullcar import NullCar
+from cars.fiat import Fiat
+from cars.mercedes import Mercedes
+from cars.jeep import Jeep
+from cars.null_car import NullCar
 
 def getcar(carname:str):
   if carname == 'Fiat':
