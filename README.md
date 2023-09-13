@@ -14,18 +14,4 @@ Every pattern is categorized in subdirectories, based on:
 A markdown readme has to be implemented for every pattern, along with eventual
 additional description
 
-```plantuml
-@startuml
-    skinparam backgroundColor #EEEBDC
-    skinparam handwritten true
-    actor Customer
-    Customer -> "login()" : username & password
-    "login()" -> Customer : session token
-    activate "login()"
-    Customer -> "placeOrder()" : session token, order info
-    "placeOrder()" -> Customer : ok
-    Customer -> "logout()"
-    "logout()" -> Customer : ok
-    deactivate "login()"
-@enduml
-```
+![tryout diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/FedeFiumi/Design_Patterns_examples/test/uml_github_support/thisuml.puml)
