@@ -1,7 +1,6 @@
 ```plantuml
 @startuml
     skinparam backgroundColor #EEEBDC
-    skinparam handwritten true
     actor Customer
     Customer -> "login()" : username & password
     "login()" -> Customer : session token
