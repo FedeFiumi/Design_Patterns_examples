@@ -1,0 +1,28 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  behavioral_cpp:
+      name: Build and compile all the c++ based examples
+      runs-on: ubuntu-latest
+      container:
+        image: gcc:latest
+        volumes:
+          - design_patterns_examples:/design_patterns_examples
+      strategy:
+        fail-fast: false
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: build
+          run: |
+               g++ behavioral/chain_of_responsability/cpp/generic_example.cpp -o chain_of_resp
+               g++ behavioral/state/cpp/generic_example.cpp -o state
+        - name: execute
+          run: |
+               ./chain_of_resp
+               ./state
