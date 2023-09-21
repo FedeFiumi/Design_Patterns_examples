@@ -36,7 +36,8 @@ changed.
 
 ## Implementations
 
-There mainly two ways to implement the adapter pattern:
+Usually this pattern implementation is also referred as wrapper. There mainly two ways to
+implement the adapter pattern:
 
 ### Object adapter
 
