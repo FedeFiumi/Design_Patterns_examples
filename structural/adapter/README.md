@@ -3,10 +3,24 @@
 Interface that makes two different element that cannot naturally interact due to some
 inconsistencies.
 
+Two key elements:
+
+* Target: the interface that the client (us) want to call
+
+* Adaptee: the incompatible class that needs to be adapted to the client call
+
+* Adapter: the class that has to adapt the target to the adaptee
+
 ## Real life practical example
 
 Typically the brighter example is the electricity plug adapter. It permits to make your
-devices with EU plug to work with non EU plugs.
+devices with EU plug to work with non EU plugs. In that case, those are the roles:
+
+* Target = EU plug
+
+* Adaptee = Might be US plug or else
+
+* Adapter: the device properly joining the plugs connectors
 
 ## When it is usually necessary?
 
@@ -22,18 +36,12 @@ changed.
 
 ## Implementations
 
-The adapter make sure the a target interface (the one that the client is expecting
-to call) is adapted to an adaptee concrete class (the class that is incompatible).
-
-Following the socket plug adapter, the adaptee role would be physically link the plug
-connectors to the other plug in the optimum way.
-
-There are many ways to do that:
+There mainly two ways to implement the adapter pattern:
 
 ### Object adapter
 
 The object adapter way implements the target interface by delegating to an adaptee
-object at run-time.
+object at run-time (generally the preferred one).
 Generically:
 
 * Use composition
@@ -63,7 +71,8 @@ Generically:
 ### Class adapter
 
 The class adapter way implements the target interface by inheriting from an adaptee
-class at compile-time.
+class at compile-time (generally adopted only for special reasons, reduce the footprint
+or enhance performances).
 Generically:
 
 * Use inheritance
