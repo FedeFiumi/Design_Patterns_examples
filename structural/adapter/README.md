@@ -5,9 +5,11 @@ inconsistencies.
 
 Two key elements:
 
-* Target: the interface that the client (us) want to call
+* Target: the interface that the client want to call
 
-* Adaptee: the incompatible class that needs to be adapted to the client call
+* Adaptee: the incompatible class that needs to be adapted to be called correctly by
+  the client (might be legacy or useful but not compatible with the current client
+  implementation.)
 
 * Adapter: the class that has to adapt the target to the adaptee
 
@@ -37,7 +39,20 @@ changed.
 ## Implementations
 
 Usually this pattern implementation is also referred as wrapper. There mainly two ways to
-implement the adapter pattern:
+implement the adapter pattern: object and class adapters.
+
+More specifically, the problem covered in the example is:
+
+We have a project implementing a media player. The media player rely on a single function
+named "play". Unfortunately the new advanced media player functonalities coming from the
+other team is composed of 2 different APIs:
+
+* One for the audio reproduction
+
+* One for video reproduction
+
+We will adopt the adapter pattern in order to link properly our (client) function with
+the received APIs.
 
 ### Object adapter
 
@@ -53,6 +68,8 @@ Generically:
 
 * Cannot override behavior
 
+#### interface class adapter
+
 ```mermaid
   classDiagram
     direction LR
@@ -62,7 +79,21 @@ Generically:
     <<interface>> Target
     Target: +method()
 
-    Adapter <-- Adaptee
+    Adapter --* Adaptee
+    Adapter: -adaptee
+    Adapter: +method()
+
+    Adaptee: +method()
+```
+
+#### Concrete class adapter
+
+```mermaid
+  classDiagram
+    direction LR
+    Client --> Adapter
+
+    Adapter --* Adaptee
     Adapter: -adaptee
     Adapter: +method()
 
