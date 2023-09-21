@@ -2,6 +2,7 @@
 #include <string>
 #include <stdexcept>
 
+
 // Target interface to adapt
 class MediaPlayer {
 public:
@@ -37,6 +38,7 @@ public:
   }
 };
 
+// Class Adapter
 class MediaAdapter: public MediaPlayer {
 public:
   MediaAdapter(std::string format) {
@@ -45,7 +47,8 @@ public:
     } else if (format == "audio") {
       mediaPlayerAdvanced_ = new ConcretePlayerOnlyAudio();
     } else {
-      throw std::invalid_argument("Invalid player format!");
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 
@@ -55,7 +58,8 @@ public:
     } else if (format == "audio") {
       mediaPlayerAdvanced_->playAudio(filename);
     } else {
-      throw std::invalid_argument("Invalid player format!");
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 
@@ -76,7 +80,8 @@ public:
       MediaAdapter adapter(format);
       adapter.play(format, filename);
     } else {
-      throw std::invalid_argument("Invalid player format!");
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 };
