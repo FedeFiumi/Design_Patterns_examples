@@ -20,14 +20,15 @@ about a single functionality.
 
 * Example: the class "vehicle" (below) is violating the single responsability principle.
 Why? The vehicle should perform only the basic operation we expect from it. Hence the
-method ```get_tyre_pressure()``` should not belong to the class, but to another, related
-either to diagnostics or the tyres.
+method ```get_tyre_pressure()``` should not belong to the class, but more in general to
+another that is ideally the univocal responsible for it (in the ```Tyre``` class..).
 
 ```mermaid
 ---
 title: Single responsability violation
 ---
   classDiagram
+    direction LR
     class Vehicle{
       -tyres
       -chassis
@@ -37,6 +38,31 @@ title: Single responsability violation
     }
 
     class Tyre{
+    }
+
+    class Chassis{
+    }
+
+    Vehicle --* Tyre
+    Vehicle --* Chassis
+```
+
+```mermaid
+---
+title: Single responsability complaint example
+---
+  classDiagram
+    direction LR
+    class Vehicle{
+      -tyres
+      -chassis
+      +steer()
+      +move()
+    }
+
+    class Tyre{
+      - tyre_pressure
+      +get_tyre_pressure()
     }
 
     class Chassis{
