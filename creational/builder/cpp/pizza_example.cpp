@@ -82,7 +82,5 @@ int main() {
     delete hawaiianPizza;
     delete spicyPizza;
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
     return 0;
 }

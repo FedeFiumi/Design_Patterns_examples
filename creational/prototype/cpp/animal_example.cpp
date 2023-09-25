@@ -74,7 +74,5 @@ int main() {
   delete dog2;
   delete cat2;
 
-  std::cout << "PRESS ENTER:";
-  std::cin.get();
   return 0;
 }

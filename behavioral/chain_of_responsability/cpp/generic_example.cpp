@@ -57,7 +57,5 @@ int main() {
     delete handler2;
     delete handler3;
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
     return 0;
 }

@@ -143,7 +143,5 @@ int main() {
     my_fact2_elem1->do_this();
     my_fact2_elem2->do_that();
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
     return 0;
 }

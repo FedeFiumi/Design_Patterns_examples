@@ -78,7 +78,5 @@ int main() {
     context.request();  // Output: State C handled the request.
     context.request();  // Output: State A handled the request.
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
     return 0;
 }
