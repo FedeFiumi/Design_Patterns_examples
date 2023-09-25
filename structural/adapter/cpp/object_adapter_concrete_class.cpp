@@ -28,10 +28,10 @@ public:
 
   void play(std::string format, std::string name) override {
     if (format == "audio") {
-      advancedPlayer.playAudio(name);
+      advancedPlayer->playAudio(name);
     }
     else if (format == "video") {
-      advancedPlayer.playVideo(name);
+      advancedPlayer->playVideo(name);
     }
     else {
       std::cout << "Unsupported format: " << format << std::endl;
