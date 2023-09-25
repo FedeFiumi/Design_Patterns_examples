@@ -340,3 +340,94 @@ class ElectriVehicle: public EnginePoweredVehicle, public ElectricPoweredVehicle
 };
 
 ```
+
+## Dependency inversion
+
+* __High-level modules should not depend on low-level modules. Both should depend on
+  abstractions (e.g. interfaces).__
+* __Abstractions should not depend on details. Details (concrete implementations) should
+  depend on abstractions.__
+
+This problem is very common also in the embedded world. YOu want to decauple from the low
+level, by inverting the dependency. If the high level module is dependent by the low level
+one, it is hell to update the code, since a modification on the lower level might cause
+a cascade impact on all the upper modules.
+Changing the direction of the dependency from the lower level implementation to the higher
+makes it incredibly easy to enhance maintainability and modularity.
+
+* Example: for a video game. we have to implement a class named Player. The class has a
+method named ```interact_with()```, which makes the player interact with different
+objects (the object in the videogame might be a switch, a fan, a door, etc..).
+
+Implementation that violates the principle (Player is dependent by the lower level
+implementation...in this case only by switch):
+
+```c++
+#include <iostream>
+
+class Switch {
+public:
+  void interact() {
+    switch_state_ = switch_state_ == true ? false : true;
+    if (this->switch_state_ == true) {
+      std::cout << "Switch is on!" << std::endl;
+    } else {
+      std::cout << "Switch is off!" << std::endl;
+    }
+  }
+
+private:
+  bool switch_state_ = false;
+};
+
+class Player{
+public:
+  Player() {}
+  void interact_with() {
+      switch_.interact();
+  }
+
+private:
+  Switch switch_; //Here it is the dependency!
+};
+
+```
+
+But if the objects to interact with become more than one? Here is the correct solution
+that invert the dependency to a common lower level interface. The interface then will
+the implement a different set of interactions.
+
+```c++
+#include <iostream>
+
+class InteractiveObj {
+public:
+  virtual void interact() = 0;
+  virtual ~InteractiveObj() = default;
+};
+
+class Switch: public InteractiveObj {
+public:
+  void interact() {
+    std::cout << "Interacted with a switch" << std::endl;
+  }
+};
+
+class Door: public InteractiveObj {
+public:
+  void interact() {
+    std::cout << "Interacted with a door" << std::endl;
+  }
+};
+
+class Player {
+public:
+  Player() {}
+  void interact_with(InteractiveObj *obj) {
+    if (obj) {
+      obj->interact();
+    }
+  }
+};
+
+```
