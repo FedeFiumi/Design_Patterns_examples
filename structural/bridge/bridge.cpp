@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main () {
-  std::cout << "PRESS ENTER:";
-  std::cin.get();
+  std::cout << "---- BRIDGE EXAMPLE ----" << std::endl;
+  std::cout << std::endl;
   return 0;
 }

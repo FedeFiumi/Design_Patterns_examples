@@ -14,6 +14,7 @@ class Context;
 // Abstract State class
 class State {
 public:
+    virtual ~State() { std::cout << "Deleting state" << std::endl; }
     virtual void handle(Context& context) = 0;
 };
 
@@ -35,9 +36,6 @@ public:
 
 // Context class
 class Context {
-private:
-    State* currentState_;
-
 public:
     Context() : currentState_(new StateA()) {}
 
@@ -49,6 +47,9 @@ public:
     void request() {
         currentState_->handle(*this);
     }
+
+private:
+    State* currentState_;
 };
 
 // Concrete State A implementation
@@ -71,6 +72,7 @@ void StateC::handle(Context& context) {
 
 // Client code
 int main() {
+    std::cout << "---- STATE EXAMPLE ----" << std::endl;
     Context context;
 
     context.request();  // Output: State A handled the request.
@@ -78,7 +80,6 @@ int main() {
     context.request();  // Output: State C handled the request.
     context.request();  // Output: State A handled the request.
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
+    std::cout << std::endl;
     return 0;
 }

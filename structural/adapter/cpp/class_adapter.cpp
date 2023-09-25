@@ -37,6 +37,7 @@ public:
 };
 
 int main (int argc, char *argv[]) {
+  std::cout << "---- ADAPTER (CLASS ADAPTER) EXAMPLE----" << std::endl;
   MediaPlayerAdapter adapter;
 
   // Valid media formats
@@ -44,9 +45,12 @@ int main (int argc, char *argv[]) {
   adapter.play("video", "movie.mp4");
 
   // Invalid media formats
-  adapter.play("image", "picture.png");
+  try{
+    adapter.play("image", "picture.png");
+  } catch (const std::invalid_argument& ex) {
+    std::cout << ex.what() << std::endl;
+  }
 
-  std::cout << "PRESS ENTER:";
-  std::cin.get();
+  std::cout << std::endl;
   return 0;
 }

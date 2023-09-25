@@ -28,13 +28,13 @@ public:
 
   void play(std::string format, std::string name) override {
     if (format == "audio") {
-      advancedPlayer.playAudio(name);
+      advancedPlayer->playAudio(name);
     }
     else if (format == "video") {
-      advancedPlayer.playVideo(name);
-    }
-    else {
-      std::cout << "Unsupported format: " << format << std::endl;
+      advancedPlayer->playVideo(name);
+    } else {
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 
@@ -44,6 +44,7 @@ private:
 };
 
 int main() {
+  std::cout << "---- ADAPTER (OBOJECT ADAPTER CONCRETE CLASS) EXAMPLE ----" << std::endl;
   MediaPlayerAdvanced advancedPlayer;
   MediaPlayerAdapter adapter(&advancedPlayer);
 
@@ -52,7 +53,12 @@ int main() {
   adapter.play("video", "movie.mp4");
 
   // Unsupported format
-  adapter.play("image", "picture.jpg");
+  try{
+    adapter.play("image", "picture.jpg");
+  } catch (const std::invalid_argument& ex) {
+    std::cout << ex.what() << std::endl;
+  }
 
+  std::cout << std::endl;
   return 0;
 }

@@ -63,10 +63,6 @@ public:
     }
   }
 
-  ~MediaAdapter() {
-    delete mediaPlayerAdvanced_;
-  }
-
 private:
   MediaPlayerAdvanced* mediaPlayerAdvanced_;
 };
@@ -87,16 +83,20 @@ public:
 };
 
 int main () {
+  std::cout << "---- ADAPTER (OBJECT ADAPTER INTERFACE) EXAMPLE ----" << std::endl;
   AudioPlayer my_audio_player;
 
   // Valid media formats
   my_audio_player.play("audio", "this_file.mp3");
   my_audio_player.play("video", "that_file.mp3");
 
-  // Invalid media formats (will throw an exception)
-  my_audio_player.play("graphic", "another_file.mp3");
+  // Unsupported format
+  try {
+    my_audio_player.play("graphic", "another_file.mp3");
+  } catch (const std::invalid_argument& ex) {
+    std::cout << ex.what() << std::endl;
+  }
 
-  std::cout << "PRESS ENTER:";
-  std::cin.get();
+  std::cout << std::endl;
   return 0;
 }
