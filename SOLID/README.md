@@ -43,8 +43,8 @@ title: Single responsability violation
     class Chassis{
     }
 
-    Vehicle --* Tyre
-    Vehicle --* Chassis
+    Vehicle --o Tyre
+    Vehicle --o Chassis
 ```
 
 ```mermaid
@@ -68,8 +68,8 @@ title: Single responsability complaint example
     class Chassis{
     }
 
-    Vehicle --* Tyre
-    Vehicle --* Chassis
+    Vehicle --o Tyre
+    Vehicle --o Chassis
 ```
 
 ## Open/closed principle
