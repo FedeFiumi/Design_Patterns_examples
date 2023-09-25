@@ -67,6 +67,7 @@ private:
 };
 
 int main() {
+        std::cout << "---- BUILDER PIZZA EXAMPLE ----" << std::endl;
     Waiter waiter;
 
     HawaiianPizzaBuilder hawaiianBuilder;
@@ -81,6 +82,8 @@ int main() {
 
     delete hawaiianPizza;
     delete spicyPizza;
+
+    std::cout << std::endl;
 
     return 0;
 }

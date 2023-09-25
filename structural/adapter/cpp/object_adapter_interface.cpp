@@ -83,6 +83,7 @@ public:
 };
 
 int main () {
+  std::cout << "---- ADAPTER (OBJECT ADAPTER INTERFACE) EXAMPLE ----" << std::endl;
   AudioPlayer my_audio_player;
 
   // Valid media formats
@@ -96,5 +97,6 @@ int main () {
     std::cout << ex.what() << std::endl;
   }
 
+  std::cout << std::endl;
   return 0;
 }

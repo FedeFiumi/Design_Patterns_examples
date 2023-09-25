@@ -44,6 +44,7 @@ private:
 };
 
 int main() {
+  std::cout << "---- ADAPTER (OBOJECT ADAPTER CONCRETE CLASS) EXAMPLE ----" << std::endl;
   MediaPlayerAdvanced advancedPlayer;
   MediaPlayerAdapter adapter(&advancedPlayer);
 
@@ -58,5 +59,6 @@ int main() {
     std::cout << ex.what() << std::endl;
   }
 
+  std::cout << std::endl;
   return 0;
 }

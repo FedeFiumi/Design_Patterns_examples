@@ -119,6 +119,7 @@ public:
 
 /* Main function */
 int main() {
+    std::cout << "---- ABSTRACT FACTORY EXAMPLE----" << std::endl;
 
     // Define a concrete factory
 #if __cplusplus == 201103L
@@ -142,6 +143,8 @@ int main() {
 
     my_fact2_elem1->do_this();
     my_fact2_elem2->do_that();
+
+    std::cout << std::endl;
 
     return 0;
 }

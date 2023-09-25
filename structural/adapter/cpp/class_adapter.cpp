@@ -37,6 +37,7 @@ public:
 };
 
 int main (int argc, char *argv[]) {
+  std::cout << "---- ADAPTER (CLASS ADAPTER) EXAMPLE----" << std::endl;
   MediaPlayerAdapter adapter;
 
   // Valid media formats
@@ -50,5 +51,6 @@ int main (int argc, char *argv[]) {
     std::cout << ex.what() << std::endl;
   }
 
+  std::cout << std::endl;
   return 0;
 }

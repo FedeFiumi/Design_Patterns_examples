@@ -72,6 +72,7 @@ void StateC::handle(Context& context) {
 
 // Client code
 int main() {
+    std::cout << "---- STATE EXAMPLE ----" << std::endl;
     Context context;
 
     context.request();  // Output: State A handled the request.
@@ -79,5 +80,6 @@ int main() {
     context.request();  // Output: State C handled the request.
     context.request();  // Output: State A handled the request.
 
+    std::cout << std::endl;
     return 0;
 }

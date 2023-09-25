@@ -40,6 +40,8 @@ private:
 
 // Client code
 int main() {
+    std::cout << "---- CHAIN OF RESPONSABILITY EXAMPLE----" << std::endl;
+
     Handler* handler1 = new ConcreteHandler();
     Handler* handler2 = new ConcreteHandler();
     Handler* handler3 = new ConcreteHandler();
@@ -59,5 +61,6 @@ int main() {
     delete handler2;
     delete handler3;
 
+    std::cout << std::endl;
     return 0;
 }
