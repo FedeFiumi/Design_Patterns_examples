@@ -32,9 +32,9 @@ public:
     }
     else if (format == "video") {
       advancedPlayer->playVideo(name);
-    }
-    else {
-      std::cout << "Unsupported format: " << format << std::endl;
+    } else {
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 
@@ -52,7 +52,11 @@ int main() {
   adapter.play("video", "movie.mp4");
 
   // Unsupported format
-  adapter.play("image", "picture.jpg");
+  try{
+    adapter.play("image", "picture.jpg");
+  } catch (const std::invalid_argument& ex) {
+    std::cout << ex.what() << std::endl;
+  }
 
   return 0;
 }
