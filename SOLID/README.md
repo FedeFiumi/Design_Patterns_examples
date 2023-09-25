@@ -141,10 +141,10 @@ as a user of a class, I should be able to utilize any of its children that may b
 to me without caring about which particular child I am calling. This means we have to
 ensure that the arguments as well as all the return values of the children are consistent.
 
-*Important: this is not only related to matching the method syntactics (return values,
+__Important: this is not only related to matching the method syntactics (return values,
 etc) but also to the functional semantic! (e.g. if a base class returns a float value
 between -20 and 20 but the base class returns a value between 33 and 142 then this is
-also a violation).*
+also a violation).__
 
 * Example: in this case the provided abstract method fly is violating the Liskov
 substitution since the penguins cannot fly. This violation can lead to unexpected behavior
