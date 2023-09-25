@@ -220,3 +220,123 @@ int main() {
     return 0;
 }
 ```
+
+## Interface segregation
+
+__No client should be forced to depend on methods it does not use__. This principle
+advocates for the creation of small and atomic interfaces.
+Specifically, it is better to have many single-purpose interfaces, than a single (or few)
+multi-purpose ones.
+This enables our software to be more reusable and customizable since we don’t have
+to rely upon or implement functionality we don’t use.
+
+* Example: the following example shows why should keep the interfaces at minimum.
+The interface should care about the methods to be used by a vehicle. While the methods
+```start()```, ```stop()``` are pretty generic, the methods ```refuel()``` and
+```recharge``` not. The latter two should be implemented only on specific vehicles.
+
+```c++
+#include <iostream>
+
+class Vehicle {
+public:
+  virtual void start() = 0;
+  virtual void stop() = 0;
+  virtual void refuel() = 0;
+  virtual void recharge() = 0;
+};
+
+class IceVehicle: public Vehicle {
+public:
+  void start() override {
+    std::cout << "Starting the ICE vehicle!" << std::endl;
+  }
+
+  void stop() override {
+    std::cout << "Stopping the ICE vehicle!" << std::endl;
+  }
+
+  void refuel() override {
+    std::cout << "Refueling the ICE vehicle!" << std::endl;
+  }
+
+  void recharge() override {
+    std::cout << "ICE vehicle does not have a traction battery, hence no recharging."
+      << std::endl;
+  }
+};
+
+class ElectricVehicle: public Vehicle {
+public:
+  void start() override {
+    std::cout << "Starting the electric vehicle!" << std::endl;
+  }
+
+  void stop() override {
+    std::cout << "Stopping the electric vehicle!" << std::endl;
+  }
+
+  void refuel() override {
+    std::cout << "Electric vehicle does not have a liquid fuel tank, hence no refueling!"
+      << std::endl;
+  }
+
+  void recharge() override {
+    std::cout << "Recharging the electric vehicle!" << std::endl;
+  }
+};
+
+```
+
+The larger the interface gets, the less maintainable and reusable it becomes.
+In order to fix it, this might be the solution:
+
+```c++
+#include <iostream>
+
+class EnginePoweredVehicle {
+public:
+  virtual void start() = 0;
+  virtual void stop() = 0;
+};
+
+class FuelPoweredVehicle {
+public:
+  virtual void refuel() = 0;
+};
+
+class ElectricPoweredVehicle {
+public:
+  virtual void recharge() = 0;
+};
+
+class ICEVehicle: public EnginePoweredVehicle, public FuelPoweredVehicle {
+public:
+  void start() override {
+    std::cout << "Starting the ICE vehicle!" << std::endl;
+  }
+
+  void stop() override {
+    std::cout << "Stopping the ICE vehicle!" << std::endl;
+  }
+
+  void refuel() override {
+    std::cout << "Refueling the ICE vehicle!" << std::endl;
+  }
+};
+
+class ElectriVehicle: public EnginePoweredVehicle, public ElectricPoweredVehicle {
+  void start() override {
+    std::cout << "Starting the electric vehicle!" << std::endl;
+  }
+
+  void stop() override {
+    std::cout << "Stopping the electric vehicle!" << std::endl;
+  }
+
+  void recharge() override {
+    std::cout << "Recharging the electric vehicle!" << std::endl;
+  }
+};
+
+```
