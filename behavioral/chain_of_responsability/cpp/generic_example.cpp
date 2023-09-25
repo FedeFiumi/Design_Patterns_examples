@@ -10,12 +10,14 @@
 
 class Handler {
 public:
+    virtual ~Handler() { std::cout << "Deleting Handler" << std::endl; }
     virtual void setNext(Handler* handler) = 0;
     virtual void handleRequest(int requestCode) = 0;
 };
 
 class ConcreteHandler: public Handler {
 public:
+    ~ConcreteHandler() { std::cout << "Deleting ConcreteHandler" << std::endl; }
     void setNext(Handler* handler) override {
         delete nextHandler_;
         nextHandler_ = handler;
