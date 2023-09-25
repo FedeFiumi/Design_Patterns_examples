@@ -71,7 +71,8 @@ jobs:
           uses: actions/checkout@v3
         - name: run behaviorals
           run: |
-               echo hi
+               python3 creational/factory/python/simple_factory/car.py
+               python3 creational/factory/python/full_factory/car.py
         - name: run creationals
           run: |
                echo hi
