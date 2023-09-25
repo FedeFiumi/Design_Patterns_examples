@@ -79,7 +79,7 @@ open for extensions and closed for modifications. It should be possible to add n
 functionalities to a class without modifying its existing code.
 
 * Example: the code below violates the open close principle. Why? Calculating the area
-that way oblige to update the function everytime we have to add a shape (e.g. what 
+that way oblige to update the function everytime we have to add a shape (e.g. what
 happens if i need to add a Circle??).
 
 ```c++
