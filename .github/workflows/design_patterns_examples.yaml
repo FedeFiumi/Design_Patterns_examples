@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  behavioral_cpp:
+  cpp_implementation:
       name: Build and compile all the c++ based examples
       runs-on: ubuntu-latest
       container:
@@ -18,11 +18,63 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v3
-        - name: build
+        - name: build behaviorals
           run: |
                g++ behavioral/chain_of_responsability/cpp/generic_example.cpp -o chain_of_resp
                g++ behavioral/state/cpp/generic_example.cpp -o state
-        - name: execute
+
+        - name: build creationals
+          run: |
+               g++ creational/abstract_factory/cpp/generic_example.cpp -o abstract_factory
+               g++ creational/builder/cpp/generic_example.cpp -o builder
+               g++ creational/prototype/cpp/animal_example.cpp -o prototype
+               g++ creational/singleton/cpp/generic_example.cpp creational/singleton/cpp/singleton.cpp -I creational/singleton/cpp/ -o singleton
+
+        - name: build structurals
+          run: |
+               g++ structural/adapter/cpp/class_adapter.cpp -o adapter_class_adapter
+               g++ structural/adapter/cpp/object_adapter_concrete_class.cpp -o adapter_object_concrete
+               g++ structural/adapter/cpp/object_adapter_interface.cpp -o adapter_object_interface
+               g++ structural/bridge/bridge.cpp -o bridge
+
+        - name: execute behaviorals
           run: |
                ./chain_of_resp
                ./state
+
+        - name: execute creationals
+          run: |
+               ./abstract_factory
+               ./builder
+               ./prototype
+               ./singleton
+
+        - name: execute structurals
+          run: |
+               ./adapter_class_adapter
+               ./adapter_object_concrete
+               ./adapter_object_interface
+               ./bridge
+
+  python_implementation:
+      name: Build and compile all the c++ based examples
+      runs-on: ubuntu-latest
+      container:
+        image: python:latest
+        volumes:
+          - design_patterns_examples:/design_patterns_examples
+      strategy:
+        fail-fast: false
+
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: run behaviorals
+          run: |
+               echo hi
+        - name: run creationals
+          run: |
+               echo hi
+        - name: run structurals
+          run: |
+               echo hi
