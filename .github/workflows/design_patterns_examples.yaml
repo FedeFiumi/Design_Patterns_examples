@@ -6,7 +6,7 @@ on:
 
 jobs:
   cpp_implementation:
-      name: Build and compile all the c++ based examples
+      name: Build and compile all the C++ based examples
       runs-on: ubuntu-latest
       container:
         image: gcc:latest
@@ -57,7 +57,7 @@ jobs:
                ./bridge
 
   python_implementation:
-      name: Build and compile all the c++ based examples
+      name: Build and compile all the Python based examples
       runs-on: ubuntu-latest
       container:
         image: python:latest
@@ -73,9 +73,11 @@ jobs:
           run: |
                python3 creational/factory/python/simple_factory/car.py
                python3 creational/factory/python/full_factory/car.py
+
         - name: run creationals
           run: |
                echo hi
+
         - name: run structurals
           run: |
                echo hi
