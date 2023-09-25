@@ -10,12 +10,14 @@
 
 class Handler {
 public:
+    virtual ~Handler() { std::cout << "Deleting Handler" << std::endl; }
     virtual void setNext(Handler* handler) = 0;
     virtual void handleRequest(int requestCode) = 0;
 };
 
 class ConcreteHandler: public Handler {
 public:
+    ~ConcreteHandler() { std::cout << "Deleting ConcreteHandler" << std::endl; }
     void setNext(Handler* handler) override {
         delete nextHandler_;
         nextHandler_ = handler;
@@ -38,6 +40,8 @@ private:
 
 // Client code
 int main() {
+    std::cout << "---- CHAIN OF RESPONSABILITY EXAMPLE----" << std::endl;
+
     Handler* handler1 = new ConcreteHandler();
     Handler* handler2 = new ConcreteHandler();
     Handler* handler3 = new ConcreteHandler();
@@ -57,7 +61,6 @@ int main() {
     delete handler2;
     delete handler3;
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
+    std::cout << std::endl;
     return 0;
 }

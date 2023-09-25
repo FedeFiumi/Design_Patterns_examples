@@ -3,4 +3,6 @@
 
 # Directories
 .vscode/
+
+# Python
 __pycache__

@@ -81,6 +81,7 @@ private:
 };
 
 int main () {
+    std::cout << "---- BUILDER EXAMPLE ----" << std::endl;
     Director my_director;
 
     ConcreteBuilder1 my_concrete_product_1;
@@ -97,7 +98,7 @@ int main () {
     delete my_product_1;
     delete my_product_2;
 
-    std::cout << "PRESS ENTER:";
-    std::cin.get();
+    std::cout << std::endl;
+
     return 0;
 }

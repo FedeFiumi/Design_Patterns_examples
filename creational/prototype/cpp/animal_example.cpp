@@ -57,6 +57,7 @@ private:
 };
 
 int main() {
+  std::cout << "---- PROTOTYPE EXAMPLE ----" << std::endl;
   AnimalPrototypeFactory factory;
   Animal* dog1 = factory.createAnimal("dog");
   Animal* cat1 = factory.createAnimal("cat");
@@ -74,7 +75,7 @@ int main() {
   delete dog2;
   delete cat2;
 
-  std::cout << "PRESS ENTER:";
-  std::cin.get();
+  std::cout << std::endl;
+
   return 0;
 }

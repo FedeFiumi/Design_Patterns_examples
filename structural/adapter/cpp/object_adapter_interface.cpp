@@ -2,6 +2,7 @@
 #include <string>
 #include <stdexcept>
 
+
 // Target interface to adapt
 class MediaPlayer {
 public:
@@ -37,6 +38,7 @@ public:
   }
 };
 
+// Class Adapter
 class MediaAdapter: public MediaPlayer {
 public:
   MediaAdapter(std::string format) {
@@ -45,7 +47,8 @@ public:
     } else if (format == "audio") {
       mediaPlayerAdvanced_ = new ConcretePlayerOnlyAudio();
     } else {
-      throw std::invalid_argument("Invalid player format!");
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 
@@ -55,12 +58,9 @@ public:
     } else if (format == "audio") {
       mediaPlayerAdvanced_->playAudio(filename);
     } else {
-      throw std::invalid_argument("Invalid player format!");
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
-  }
-
-  ~MediaAdapter() {
-    delete mediaPlayerAdvanced_;
   }
 
 private:
@@ -76,22 +76,27 @@ public:
       MediaAdapter adapter(format);
       adapter.play(format, filename);
     } else {
-      throw std::invalid_argument("Invalid player format!");
+      std::string expt_msg = "Invalid format: " + format;
+      throw std::invalid_argument(expt_msg);
     }
   }
 };
 
 int main () {
+  std::cout << "---- ADAPTER (OBJECT ADAPTER INTERFACE) EXAMPLE ----" << std::endl;
   AudioPlayer my_audio_player;
 
   // Valid media formats
   my_audio_player.play("audio", "this_file.mp3");
   my_audio_player.play("video", "that_file.mp3");
 
-  // Invalid media formats (will throw an exception)
-  my_audio_player.play("graphic", "another_file.mp3");
+  // Unsupported format
+  try {
+    my_audio_player.play("graphic", "another_file.mp3");
+  } catch (const std::invalid_argument& ex) {
+    std::cout << ex.what() << std::endl;
+  }
 
-  std::cout << "PRESS ENTER:";
-  std::cin.get();
+  std::cout << std::endl;
   return 0;
 }

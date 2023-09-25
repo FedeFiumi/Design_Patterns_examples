@@ -20,7 +20,6 @@ void FuncThread2(){
 //    std::cout << my_singleton->value() << " Thread2" << std::endl;
 }
 
-
 int main()
 {
     /* Following threads should print the same string "GLOBAL".
@@ -32,11 +31,13 @@ int main()
        The automatic instance of a Singleton inside a function is not blocking the creation of
        another singleton on the global scope.
     */
+    std::cout << "---- SINGLETON EXAMPLE----" << std::endl;
     std::thread t1(FuncThread1);
     std::thread t2(FuncThread2);
     t1.join();
     t2.join();
 
     std::cout << my_singleton->value() << " main" << std::endl;
+    std::cout << std::endl;
     return 0;
 }
