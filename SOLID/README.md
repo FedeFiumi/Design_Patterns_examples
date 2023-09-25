@@ -163,7 +163,8 @@ public:
 class Penguin : public Bird {
 public:
     void fly() override {
-        std::cout << "A penguin is swimming, not flying!" << std::endl;
+        std::cout << "A penguin is either walking, sliding or swimming, not flying!"
+        << std::endl;
     }
 };
 
@@ -176,7 +177,7 @@ int main() {
     Penguin penguin;
 
     makeBirdFly(bird);     // Output: A bird is flying.
-    makeBirdFly(penguin);  // Output: A penguin is swimming, not flying!
+    makeBirdFly(penguin);  // Output: A penguin is either walking, sliding or swimming, not flying!
 
     return 0;
 }
@@ -201,7 +202,7 @@ public:
 class Penguin : public Bird {
 public:
     void move() override {
-        std::cout << "A penguin is swimming, not flying!" << std::endl;
+        std::cout << "A penguin moves by walking, sliding or swimming!" << std::endl;
     }
 };
 
@@ -214,7 +215,7 @@ int main() {
     Penguin penguin;
 
     makeBirdMove(bird);     // Output: A bird is moving.
-    makeBirdMove(penguin);  // Output: A penguin is swimming, not flying!
+    makeBirdMove(penguin);  // Output: A penguin moves by walking, sliding or swimming!
 
     return 0;
 }
