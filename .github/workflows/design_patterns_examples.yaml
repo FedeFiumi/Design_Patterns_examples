@@ -20,7 +20,7 @@ jobs:
           uses: actions/checkout@v3
         - name: build behaviorals
           run: |
-               g++ -Wall behavioral/chain_of_responsability/cpp/generic_example.cpp -o chain_of_resp
+               g++ -Wall behavioral/chain_of_responsibility/cpp/generic_example.cpp -o chain_of_resp
                g++ -Wall behavioral/state/cpp/generic_example.cpp -o state
 
         - name: build creationals
