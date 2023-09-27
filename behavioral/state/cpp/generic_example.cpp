@@ -1,11 +1,3 @@
-/* The State Pattern is a behavioral design pattern that allows an object to alter
-   its behavior when its internal state changes. It encapsulates different behaviors
-   into separate state objects and delegates the execution of behavior to the current
-   state object.
-   This pattern promotes loose coupling between the object and its behavior, making it
-   easier to add or modify states without impacting the object's code.
-*/
-
 #include <iostream>
 
 // Context class that contains a state
@@ -37,7 +29,12 @@ public:
 // Context class
 class Context {
 public:
-    Context() : currentState_(new StateA()) {}
+    Context(State *initial_state) : currentState_(initial_state) {}
+
+    ~Context() {
+        delete currentState_;
+        std::cout << "Deleting Context" << std::endl;
+    }
 
     void setState(State* state) {
         delete currentState_;
@@ -73,7 +70,7 @@ void StateC::handle(Context& context) {
 // Client code
 int main() {
     std::cout << "---- STATE EXAMPLE ----" << std::endl;
-    Context context;
+    Context context(new StateA);
 
     context.request();  // Output: State A handled the request.
     context.request();  // Output: State B handled the request.
