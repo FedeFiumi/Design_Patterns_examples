@@ -29,7 +29,12 @@ public:
 // Context class
 class Context {
 public:
-    Context() : currentState_(new StateA()) {}
+    Context(State *initial_state) : currentState_(initial_state) {}
+
+    ~Context() {
+        delete currentState_;
+        std::cout << "Deleting Context" << std::endl;
+    }
 
     void setState(State* state) {
         delete currentState_;
@@ -65,7 +70,7 @@ void StateC::handle(Context& context) {
 // Client code
 int main() {
     std::cout << "---- STATE EXAMPLE ----" << std::endl;
-    Context context;
+    Context context(new StateA);
 
     context.request();  // Output: State A handled the request.
     context.request();  // Output: State B handled the request.
