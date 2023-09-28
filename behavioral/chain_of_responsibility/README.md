@@ -16,3 +16,43 @@ do, amongst the following points:
 * pass the ball (the responsibility) to the next handler
 
 * Mix of the two point above
+
+The following scheme is not following the usual representation. Usually the nextHandler_
+member is placed in the Handler class and the concrete classes implements only
+the methods. Preferred this way to have Handler as interface.
+
+Another way possible would be implement a BaseConcrete class implementing a base version
+of setNext() and handleRequest() plus adding the nextHandler_ member. Then create
+BaseConcrete derived classes overriding the methods when a custom one is needed.
+
+```mermaid
+  classDiagram
+  direction TB
+
+  class Client
+
+  class Handler{
+    <<interface>>
+    +setNext(Handler* nextHandler)
+    +handleRequest()
+  }
+
+  class ConcreteHandler{
+    -nextHandler : Handler*
+    +setNext(Handler* nextHandler)
+    +handleRequest()
+  }
+
+  class ConcreteHandlerN{
+    -nextHandler : Handler*
+    +setNext(Handler* nextHandler)
+    +handleRequest()
+  }
+
+  Client --> Handler
+  Handler <|.. ConcreteHandler
+  ConcreteHandler o--> Handler : Successor
+  Handler <|.. ConcreteHandlerN
+  ConcreteHandlerN o--> Handler : Successor
+
+```
