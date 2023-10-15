@@ -1,11 +1,3 @@
-/* The Chain of Responsibility Pattern is a behavioral design pattern that allows
-   an object to pass a request along a chain of potential handlers until the request
-   is handled or reaches the end of the chain. Each handler in the chain has the ability
-   to either handle the request or pass it to the next handler in the chain.
-   This pattern decouples the sender of the request from its receivers, giving multiple
-   objects the opportunity to handle the request independently.
-*/
-
 #include <iostream>
 
 class Handler {
@@ -18,6 +10,7 @@ public:
 class ConcreteHandler: public Handler {
 public:
     ~ConcreteHandler() { std::cout << "Deleting ConcreteHandler" << std::endl; }
+
     void setNext(Handler* handler) override {
         delete nextHandler_;
         nextHandler_ = handler;
@@ -40,7 +33,7 @@ private:
 
 // Client code
 int main() {
-    std::cout << "---- CHAIN OF RESPONSABILITY EXAMPLE----" << std::endl;
+    std::cout << "---- CHAIN OF RESPONSIBILITY EXAMPLE----" << std::endl;
 
     Handler* handler1 = new ConcreteHandler();
     Handler* handler2 = new ConcreteHandler();
