@@ -2,6 +2,8 @@ from factories.ford_factory import FordFactory
 from factories.mercedes_factory import MercedesFactory
 from factories.toyota_factory import ToyotaFactory
 
+print("----ABSTRACT FACTORY EXAMPLE")
+print()
 
 for factory in [FordFactory, MercedesFactory, ToyotaFactory]:
     print("Factory " + str(factory))
