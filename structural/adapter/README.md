@@ -44,7 +44,7 @@ implement the adapter pattern: object and class adapters.
 More specifically, the problem covered in the example is:
 
 We have a project implementing a media player. The media player rely on a single function
-named "play". Unfortunately the new advanced media player functonalities coming from the
+named "play". Unfortunately the new advanced media player functionalities coming from the
 other team is composed of 2 different APIs:
 
 * One for the audio reproduction

@@ -8,15 +8,15 @@ to add or modify states without impacting the object's code.
 
 It consists of:
 
-* Context: this is the main considered objext, with a changing internal state
+* Context: this is the main considered object, with a changing internal state
 
 * States: derived classes in charge of manage the internal state of the system
 
 In a nutshell, hte context work as a "FSM execution environment":
 
-* Everytime a ```request()``` is called, the internal FSM evolves (A state handle is called)
+* Every time a ```request()``` is called, the internal FSM evolves (A state handle is called)
 
-* Everytime a ```setState(State *state)``` is called, the state is changed (context update his state)
+* Every time a ```setState(State *state)``` is called, the state is changed (context update his state)
 
 ```mermaid
   classDiagram

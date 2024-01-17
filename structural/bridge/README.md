@@ -81,6 +81,6 @@ Cons:
 
 * Increase memory management overhead
 
-* Maintenaince overhead (every interface is splitted in original and impl class)
+* Maintenance overhead (every interface is split in original and impl class)
 
 * Complicate inheritance

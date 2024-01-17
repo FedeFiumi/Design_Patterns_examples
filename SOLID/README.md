@@ -1,9 +1,9 @@
 # SOLID
 
 The acronym represent a set of principles in order to build clean code.
-Rispectively:
+Respectively:
 
-* S: Single responsability
+* S: Single responsibility
 
 * O: Open/closed principle
 
@@ -13,19 +13,19 @@ Rispectively:
 
 * D: dependency inversion
 
-## Single responsability
+## Single responsibility
 
-This principle says that every object should be implmented to care/cover only
+This principle says that every object should be implemented to care/cover only
 about a single functionality.
 
-* Example: the class "vehicle" (below) is violating the single responsability principle.
+* Example: the class "vehicle" (below) is violating the single responsibility principle.
 Why? The vehicle should perform only the basic operation we expect from it. Hence the
 method ```get_tyre_pressure()``` should not belong to the class, but more in general to
 another that is ideally the univocal responsible for it (in the ```Tyre``` class..).
 
 ```mermaid
 ---
-title: Single responsability violation
+title: Single responsibility violation
 ---
   classDiagram
     direction LR
@@ -49,7 +49,7 @@ title: Single responsability violation
 
 ```mermaid
 ---
-title: Single responsability complaint example
+title: Single responsibility complaint example
 ---
   classDiagram
     direction LR
@@ -79,7 +79,7 @@ open for extensions and closed for modifications. It should be possible to add n
 functionalities to a class without modifying its existing code.
 
 * Example: the code below violates the open close principle. Why? Calculating the area
-that way oblige to update the function everytime we have to add a shape (e.g. what
+that way oblige to update the function every time we have to add a shape (e.g. what
 happens if i need to add a Circle??).
 
 ```c++
@@ -374,7 +374,7 @@ class ElectriVehicle: public EnginePoweredVehicle, public ElectricPoweredVehicle
 * __Abstractions should not depend on details. Details (concrete implementations) should
   depend on abstractions.__
 
-This problem is very common also in the embedded world. YOu want to decauple from the low
+This problem is very common also in the embedded world. YOu want to decouple from the low
 level, by inverting the dependency. If the high level module is dependent by the low level
 one, it is hell to update the code, since a modification on the lower level might cause
 a cascade impact on all the upper modules.

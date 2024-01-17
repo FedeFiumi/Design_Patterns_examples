@@ -91,7 +91,7 @@ Cons:
 Pros (additional vs simple):
 
 * Adding an abstract class for factories makes the things more manageable/vary (many
-  factorioes can be implemented)
+  factories can be implemented)
 
 Cons (additional vs simple):
 
